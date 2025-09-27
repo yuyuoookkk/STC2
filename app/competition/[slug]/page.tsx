@@ -128,11 +128,11 @@ const competitionData = {
     grade: "SMP",
     icon: "🎮",
     requirements: [
-      "Team of 5 players (+ 1 substitute allowed)",
-      "All players must be rank Epic or above",
-      "Stable internet connection for online matches",
-      "Discord for team communication",
-      "Updated Mobile Legends game version",
+      "Peserta dilarang menggunakan program pihak ketiga atau program ilegal yang dapat mengganggu proses berjalannya turnamen.",
+      "Peserta tidak diizinkan untuk menggunakan dan memakai bug dengan sengaja.",
+      "Peserta diwajibkan untuk berada di sekitar area pertandingan yang sudah ditentukan.",
+      "Peserta dilarang melakukan taunting yang berlebihan terhadap lawan.",
+      "Setelah pertandingan selesai, kapten tim yang menang bisa mengirimkan screenshot hasil pertandingan ke panitia dengan format (tim a vs tim b, win tim a).",
     ],
     judging: [
       "Tournament bracket elimination system",
@@ -161,11 +161,11 @@ const competitionData = {
     grade: "SMP",
     icon: "🎮",
     requirements: [
-      "Team of 4 players (+ 1 substitute allowed)",
-      "All players must be rank Epic or above",
-      "Stable internet connection for online matches",
-      "Discord for team communication",
-      "Updated Free Fire game version",
+      "Peserta dilarang menggunakan program pihak ketiga atau program ilegal yang dapat mengganggu proses berjalannya turnamen.",
+      "Peserta tidak diizinkan untuk menggunakan dan memakai bug dengan sengaja.",
+      "Peserta diwajibkan untuk berada di sekitar area pertandingan yang sudah ditentukan.",
+      "Peserta dilarang melakukan taunting yang berlebihan terhadap lawan.",
+      "Setelah pertandingan selesai, kapten tim yang menang bisa mengirimkan screenshot hasil pertandingan ke panitia",
     ],
     judging: [
       "Tournament bracket elimination system",
@@ -295,6 +295,20 @@ export default function CompetitionDetailPage({
               <p className="text-sm sm:text-base lg:text-lg text-white/70 mb-4 sm:mb-6 text-pretty leading-relaxed">
                 {competition.description}
               </p>
+
+              {/* Guidebook CTA Button */}
+              <div className="mt-2 sm:mt-3">
+                <Link
+                  href={`/guidebooks/${params.slug}.pdf`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-lg px-3 sm:px-4 py-2 text-xs sm:text-sm font-semibold text-white border border-white/20 bg-white/10 hover:bg-white/15 transition-colors"
+                  aria-label="Buka Buku Panduan (PDF)"
+                >
+                  <BookOpen className="w-4 h-4" />
+                  <span>Buku Panduan</span>
+                </Link>
+              </div>
             </div>
           </div>
         </div>
@@ -364,7 +378,7 @@ export default function CompetitionDetailPage({
 
             {/* Timeline */}
             <div className="glass-card rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8">
-              <h3 className="text-lg sm:text-xl font-bold text-white mb-4 sm:mb-6">Timeline</h3>
+              <h3 className="text-lg sm:text-xl font-bold text-white mb-4 sm:mb-6">Jadwal</h3>
               <div className="space-y-3 sm:space-y-4">
                 {competition.timeline.map((phase, index) => (
                   <div key={index} className="border-l-2 border-purple-400 pl-3 sm:pl-4">

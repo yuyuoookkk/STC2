@@ -62,33 +62,33 @@ export default function Home() {
   const galleryImages = [
     {
       id: 1,
-      title: "STC 2024 Opening Ceremony",
-      description: "Pembukaan kompetisi teknologi terbesar di Bali",
-      image: "/technology-competition-opening-ceremony-with-stude.jpg",
+      title: "",
+      description: "",
+      image: "/gallery/IMG_3163.jpg",
     },
     {
       id: 2,
-      title: "Web Design Competition",
-      description: "Peserta menunjukkan kreativitas dalam desain web",
-      image: "/students-working-on-web-design-competition-with-co.jpg",
+      title: "",
+      description: "",
+      image: "/gallery/IMG_2499.jpg",
     },
     {
       id: 3,
-      title: "Esport Tournament",
-      description: "Pertandingan sengit Mobile Legends dan Free Fire",
-      image: "/esport-gaming-tournament-with-multiple-screens-and.jpg",
+      title: "",
+      description: "",
+      image: "/gallery/IMG_2497.jpg",
     },
     {
       id: 4,
-      title: "Speed Typing Challenge",
-      description: "Kompetisi mengetik tercepat dan terakurat",
-      image: "/speed-typing-competition-with-keyboards-and-focuse.jpg",
+      title: "",
+      description: "",
+      image: "/gallery/IMG_2474.jpg",
     },
     {
       id: 5,
-      title: "Award Ceremony",
-      description: "Penyerahan penghargaan kepada para juara",
-      image: "/award-ceremony-with-trophies-and-winners-on-stage.jpg",
+      title: "",
+      description: "",
+      image: "/gallery/IMG_2260.jpg",
     },
   ]
 

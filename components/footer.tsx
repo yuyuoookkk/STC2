@@ -13,11 +13,11 @@ export function Footer() {
               <img
                 src="/images/TEKS STIBAJRA.png"
                 alt="STIBAJRA"
-                className="h-12 md:h-16 w-auto object-contain"
+                className="h-13 md:h-17 w-auto object-contain"
               />
             </div>
             <p className="text-white/70 text-sm leading-relaxed mb-3">
-              STIBAJRA Technology Competition - Empowering the next generation of tech innovators.
+              STIBAJRA Technology Competition - Opening the Portal Of Technology To Iluminate Creativity And Imagination.
             </p>
             <div className="flex items-center gap-2 text-white/60 text-sm">
               <MapPin className="w-4 h-4" />
@@ -48,11 +48,6 @@ export function Footer() {
                   className="text-white/70 hover:text-white text-sm transition-colors"
                 >
                   Speed Typing
-                </a>
-              </li>
-              <li>
-                <a href="/competition/digital-art" className="text-white/70 hover:text-white text-sm transition-colors">
-                  Digital Art
                 </a>
               </li>
               <li>
