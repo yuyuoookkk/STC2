@@ -89,12 +89,8 @@ export default function CompetitionRegisterPage({ params }: { params: { slug: st
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 text-xs sm:text-sm text-white/70">
               <div className="flex items-center gap-1">
-                <Calendar className="w-3 h-3 sm:w-4 sm:h-4" />
-                <span>15-17 oktober 2025</span>
-              </div>
-              <div className="flex items-center gap-1">
                 <MapPin className="w-3 h-3 sm:w-4 sm:h-4" />
-                <span>SMKTIBaliGlobal Jimbaran</span>
+                <span>SMKTIBali Global Jimbaran</span>
               </div>
             </div>
           </div>

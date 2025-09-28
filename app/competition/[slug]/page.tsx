@@ -1,6 +1,16 @@
-import Link from "next/link"
-import { ArrowLeft, Users, Clock, Trophy, Calendar, CheckCircle, Award, Target, BookOpen } from "lucide-react"
-import { notFound } from "next/navigation"
+import Link from "next/link";
+import {
+  ArrowLeft,
+  Users,
+  Clock,
+  Trophy,
+  Calendar,
+  CheckCircle,
+  Award,
+  Target,
+  BookOpen,
+} from "lucide-react";
+import { notFound } from "next/navigation";
 
 const competitionData = {
   "web-design": {
@@ -16,11 +26,12 @@ const competitionData = {
     grade: "SMA/SMK",
     icon: "💻",
     requirements: [
-      "Proficiency in HTML, CSS, and JavaScript",
-      "Experience with responsive design",
-      "Knowledge of modern frameworks (React, Vue, Angular)",
-      "Understanding of web accessibility standards",
-      "Basic knowledge of version control (Git)",
+      "Peserta merupakan siswa-siswi kelas X, XI, dan XII SMA/SMK/MA sederajat di Provinsi Bali yang dibuktikan dengan Kartu Pelajar atau Surat Keterangan resmi dari kepala sekolah.",
+      "Peserta adalah perseorangan/individu.",
+      "Peserta sudah melengkapi administrasi termasuk biaya pendaftaran.",
+      "Peserta yang melakukan kecurangan akan didiskualifikasi.",
+      "Peserta diwajibkan mengikuti Technical Meeting (TM).",
+      "Keputusan juri bersifat mutlak dan tidak dapat diganggu gugat.",
     ],
     judging: [
       "Babak Penyisihan — Antarmuka (45%)",
@@ -37,14 +48,26 @@ const competitionData = {
         date: "29 Sep 2025 – 13 Okt 2025",
         description: "Pendaftaran gelombang pertama",
       },
-      { phase: "Pendaftaran - Gel. 2", date: "14 Okt 2025 – 24 Okt 2025", description: "Pendaftaran gelombang kedua" },
-      { phase: "Technical Meeting", date: "4 Okt 2025", description: "Sosialisasi aturan dan teknis lomba" },
+      {
+        phase: "Pendaftaran - Gel. 2",
+        date: "14 Okt 2025 – 24 Okt 2025",
+        description: "Pendaftaran gelombang kedua",
+      },
+      {
+        phase: "Technical Meeting",
+        date: "4 Okt 2025",
+        description: "Sosialisasi aturan dan teknis lomba",
+      },
       {
         phase: "Pengumpulan Bahan Website",
         date: "24–26 Okt 2025",
         description: "Unggah bahan untuk pembuatan website",
       },
-      { phase: "Hari Lomba", date: "28 Okt 2025", description: "Pelaksanaan lomba Web Design" },
+      {
+        phase: "Hari Lomba",
+        date: "28 Okt 2025",
+        description: "Pelaksanaan lomba Web Design",
+      },
       {
         phase: "Puncak Acara & Penghargaan",
         date: "8 Nov 2025",
@@ -65,11 +88,11 @@ const competitionData = {
     grade: "SMP",
     icon: "🎨",
     requirements: [
-      "Proficiency in design software (Photoshop, Illustrator, Canva)",
-      "Understanding of typography and color theory",
-      "Knowledge of composition and layout principles",
-      "Ability to work with high-resolution graphics",
-      "Creative thinking and conceptual skills",
+      'Lomba poster bertemakan "Technology: Gateway to Infinite Ideas".',
+      "Pembuatan poster dilaksanakan secara online. Poster dapat dibuat menggunakan aplikasi edit (seperti Canva, PicsArt, dan sejenisnya).",
+      "Peserta dapat menggunakan software editing grafis apa pun (contoh: Photoshop, CorelDraw, Illustrator, Canva, dan sejenisnya).",
+      "Buatlah poster semenarik mungkin namun memiliki pesan yang berkesan serta sesuai tema yang telah ditentukan panitia STC 2025.",
+      "Peserta dilarang menggunakan sumber informasi dari AI dan website diskusi (Brainly, Quora, dll.).",
     ],
     judging: [
       "Makna/Pesan Poster (40%)",
@@ -78,11 +101,36 @@ const competitionData = {
       "Kreativitas Penyampaian (10%)",
     ],
     timeline: [
-      { phase: "Registration", date: "March 1-8", description: "Register and submit portfolio samples" },
-      { phase: "Brief Release", date: "March 9", description: "Competition brief and themes announced" },
-      { phase: "Competition", date: "March 12-13", description: "2 days of design creation" },
-      { phase: "Judging", date: "March 14-15", description: "Design experts evaluate submissions" },
-      { phase: "Results", date: "March 16", description: "Winners announced and exhibition opens" },
+      {
+        phase: "Pendaftaran - Gel. 1",
+        date: "29 Sep 2025 – 13 Okt 2025",
+        description: "Pendaftaran gelombang pertama",
+      },
+      {
+        phase: "Pendaftaran - Gel. 2",
+        date: "14 Okt 2025 – 24 Okt 2025",
+        description: "Pendaftaran gelombang kedua",
+      },
+      {
+        phase: "Technical Meeting",
+        date: "4 Okt 2025",
+        description: "Sosialisasi aturan dan teknis lomba",
+      },
+      {
+        phase: "Pengumpulan Karya Poster",
+        date: "29 Sep 2025 – 22 Okt 2025",
+        description: "Unggah karya poster",
+      },
+      {
+        phase: "Hari Lomba",
+        date: "27 Okt 2025",
+        description: "Pelaksanaan lomba Design Poster",
+      },
+      {
+        phase: "Puncak Acara & Penghargaan",
+        date: "8 Nov 2025",
+        description: "Pengumuman pemenang dan penyerahan hadiah",
+      },
     ],
   },
   "design-maskot": {
@@ -97,9 +145,11 @@ const competitionData = {
     grade: "SMP",
     icon: "🦸",
     requirements: [
-      "Kemampuan ilustrasi vektor/raster",
-      "Pemahaman identitas merek",
-      "Kreativitas dan konsistensi karakter",
+      "Karya harus sesuai dengan tema yang sudah ditentukan.",
+      "Karya harus orisinal (dilarang plagiarisme), belum pernah dipublikasikan atau dilombakan.",
+      "Karya wajib dibuat dengan teknik digital (sketsa manual boleh, tetapi hasil akhir harus digital).",
+      "Karya tidak boleh mengandung: 1) unsur SARA, 2) pornografi, 3) kekerasan, 4) unsur yang melanggar hukum atau norma yang berlaku.",
+      "Peserta wajib menjaga etika dan sportivitas selama lomba.",
     ],
     judging: [
       "Penjelasan Konsep Karya (30%)",
@@ -108,17 +158,42 @@ const competitionData = {
       "Jawaban Atas Pertanyaan Juri (20%)",
     ],
     timeline: [
-      { phase: "Pendaftaran - Gel. 1", date: "29 Sep 2025 – 13 Okt 2025", description: "" },
-      { phase: "Pendaftaran - Gel. 2", date: "14 Okt 2025 – 22 Okt 2025", description: "" },
-      { phase: "Technical Meeting", date: "4 Okt 2025", description: "" },
-      { phase: "Pengumpulan Karya", date: "24 Okt 2025", description: "Pengumpulan serentak maksimal 18.00 WITA" },
-      { phase: "Final", date: "26 Okt 2025", description: "" },
-      { phase: "Puncak Acara & Penghargaan", date: "8 Nov 2025", description: "" },
+      {
+        phase: "Pendaftaran - Gel. 1",
+        date: "29 Sep 2025 – 13 Okt 2025",
+        description: "Pendaftaran gelombang pertama",
+      },
+      {
+        phase: "Pendaftaran - Gel. 2",
+        date: "14 Okt 2025 – 22 Okt 2025",
+        description: "Pendaftaran gelombang kedua",
+      },
+      {
+        phase: "Technical Meeting",
+        date: "4 Okt 2025",
+        description: "Sosialisasi aturan dan teknis lomba",
+      },
+      {
+        phase: "Pengumpulan Karya",
+        date: "24 Okt 2025",
+        description: "Pengumpulan serentak maksimal 18.00 WITA",
+      },
+      {
+        phase: "Final",
+        date: "26 Okt 2025",
+        description: "Final Desain Maskot",
+      },
+      {
+        phase: "Puncak Acara & Penghargaan",
+        date: "8 Nov 2025",
+        description: "Pengumuman pemenang dan penyerahan hadiah",
+      },
     ],
   },
   "esport-ml": {
     name: "Esport Mobile legends",
-    description: "Mobile Legends competitive gaming tournament. Form teams and compete in strategic MOBA gameplay.",
+    description:
+      "Mobile Legends competitive gaming tournament. Form teams and compete in strategic MOBA gameplay.",
     fullDescription:
       "The Mobile Legends esports tournament brings together the best MOBA players in the region. Teams of 5 players will compete in intense strategic battles, showcasing their teamwork, individual skills, and game knowledge in this popular mobile game.",
     participants: "200+",
@@ -128,11 +203,11 @@ const competitionData = {
     grade: "SMP",
     icon: "🎮",
     requirements: [
-      "Peserta dilarang menggunakan program pihak ketiga atau program ilegal yang dapat mengganggu proses berjalannya turnamen.",
-      "Peserta tidak diizinkan untuk menggunakan dan memakai bug dengan sengaja.",
-      "Peserta diwajibkan untuk berada di sekitar area pertandingan yang sudah ditentukan.",
-      "Peserta dilarang melakukan taunting yang berlebihan terhadap lawan.",
-      "Setelah pertandingan selesai, kapten tim yang menang bisa mengirimkan screenshot hasil pertandingan ke panitia dengan format (tim a vs tim b, win tim a).",
+      "Team of 5 players (+ 1 substitute allowed)",
+      "All players must be rank Epic or above",
+      "Stable internet connection for online matches",
+      "Discord for team communication",
+      "Updated Mobile Legends game version",
     ],
     judging: [
       "Tournament bracket elimination system",
@@ -141,17 +216,42 @@ const competitionData = {
       "Standard Mobile Legends tournament rules apply",
     ],
     timeline: [
-      { phase: "Pendaftaran - Gel. 1", date: "29 Sep 2025 – 13 Okt 2025", description: "Pendaftaran tim" },
-      { phase: "Pendaftaran - Gel. 2", date: "14 Okt 2025 – 26 Okt 2025", description: "Pendaftaran tim" },
-      { phase: "Technical Meeting", date: "4 Okt 2025", description: "Briefing teknis turnamen" },
-      { phase: "Babak Penyisihan", date: "29 Okt 2025", description: "Pertandingan penyisihan" },
-      { phase: "Semifinal & Final", date: "1 Nov 2025", description: "Babak semifinal dan final" },
-      { phase: "Puncak Acara & Penghargaan", date: "8 Nov 2025", description: "Pengumuman pemenang dan penghargaan" },
+      {
+        phase: "Pendaftaran - Gel. 1",
+        date: "29 Sep 2025 – 13 Okt 2025",
+        description: "Pendaftaran tim",
+      },
+      {
+        phase: "Pendaftaran - Gel. 2",
+        date: "14 Okt 2025 – 26 Okt 2025",
+        description: "Pendaftaran tim",
+      },
+      {
+        phase: "Technical Meeting",
+        date: "4 Okt 2025",
+        description: "Briefing teknis turnamen",
+      },
+      {
+        phase: "Babak Penyisihan",
+        date: "29 Okt 2025",
+        description: "Pertandingan penyisihan",
+      },
+      {
+        phase: "Semifinal & Final",
+        date: "1 Nov 2025",
+        description: "Babak semifinal dan final",
+      },
+      {
+        phase: "Puncak Acara & Penghargaan",
+        date: "8 Nov 2025",
+        description: "Pengumuman pemenang dan penghargaan",
+      },
     ],
   },
   "esport-ff": {
     name: "Esport Free Fire",
-    description: "Free Fire competitive gaming tournament. Form teams and compete in strategic battle royale gameplay.",
+    description:
+      "Free Fire competitive gaming tournament. Form teams and compete in strategic battle royale gameplay.",
     fullDescription:
       "The Free Fire esports tournament brings together the best battle royale players in the region. Teams of 4 players will compete in intense strategic battles, showcasing their teamwork, individual skills, and game knowledge in this popular mobile game.",
     participants: "150+",
@@ -161,25 +261,48 @@ const competitionData = {
     grade: "SMP",
     icon: "🎮",
     requirements: [
-      "Peserta dilarang menggunakan program pihak ketiga atau program ilegal yang dapat mengganggu proses berjalannya turnamen.",
-      "Peserta tidak diizinkan untuk menggunakan dan memakai bug dengan sengaja.",
-      "Peserta diwajibkan untuk berada di sekitar area pertandingan yang sudah ditentukan.",
-      "Peserta dilarang melakukan taunting yang berlebihan terhadap lawan.",
-      "Setelah pertandingan selesai, kapten tim yang menang bisa mengirimkan screenshot hasil pertandingan ke panitia",
+      "Team of 4 players (+ 1 substitute allowed)",
+      "All players must be rank Epic or above",
+      "Stable internet connection for online matches",
+      "Discord for team communication",
+      "Updated Free Fire game version",
+      "Setiap 1 kill bernilai 1 poin.",
+      "Poin placement (hashtag) diberikan dari tertinggi ke terendah: 12 sampai 0 poin; pemenang match mendapat poin placement tertinggi.",
+      "Total poin tim dihitung dari akumulasi poin placement (hashtag) + total kill tim.",
+      "Peserta wajib memahami dan mematuhi seluruh rulebook, termasuk peraturan umum dan peraturan di dalam game.",
+      "Juara lomba: Juara 1, Juara 2, Juara 3, serta penghargaan Best Player.",
     ],
     judging: [
-      "Tournament bracket elimination system",
-      "Best of 3 matches in early rounds",
-      "Best of 5 matches in finals",
-      "Standard Free Fire tournament rules apply",
+      "Pada babak penyisihan, dilakukan seleksi untuk menentukan 12 tim dengan perolehan nilai tertinggi yang berhak melaju ke babak final.",
+      "Selanjutnya, pada babak final, dari 12 tim tersebut akan dipilih kembali 3 tim dengan nilai tertinggi sebagai juara 1, juara 2, dan juara 3.",
     ],
     timeline: [
-      { phase: "Pendaftaran - Gel. 1", date: "29 Sep 2025 – 13 Okt 2025", description: "Pendaftaran tim" },
-      { phase: "Pendaftaran - Gel. 2", date: "14 Okt 2025 – 26 Okt 2025", description: "Pendaftaran tim" },
-      { phase: "Technical Meeting", date: "4 Okt 2025", description: "Briefing teknis turnamen" },
-      { phase: "Babak Penyisihan", date: "29 Okt 2025", description: "Pertandingan penyisihan" },
+      {
+        phase: "Pendaftaran - Gel. 1",
+        date: "29 Sep 2025 – 13 Okt 2025",
+        description: "Pendaftaran tim",
+      },
+      {
+        phase: "Pendaftaran - Gel. 2",
+        date: "14 Okt 2025 – 26 Okt 2025",
+        description: "Pendaftaran tim",
+      },
+      {
+        phase: "Technical Meeting",
+        date: "4 Okt 2025",
+        description: "Briefing teknis turnamen",
+      },
+      {
+        phase: "Babak Penyisihan",
+        date: "29 Okt 2025",
+        description: "Pertandingan penyisihan",
+      },
       { phase: "Final", date: "1 Nov 2025", description: "Pertandingan final" },
-      { phase: "Puncak Acara & Penghargaan", date: "8 Nov 2025", description: "Pengumuman pemenang dan penghargaan" },
+      {
+        phase: "Puncak Acara & Penghargaan",
+        date: "8 Nov 2025",
+        description: "Pengumuman pemenang dan penghargaan",
+      },
     ],
   },
   "rumus-excel": {
@@ -189,76 +312,119 @@ const competitionData = {
     fullDescription:
       "Kuasai rumus dan fungsi Excel. Selesaikan masalah analisis data kompleks menggunakan teknik Excel lanjutan.",
     participants: "100+",
-    duration: "2 hours",
+    duration: "90 minutes",
     prize: "$4,000",
     deadline: "—",
     grade: "SMP",
     icon: "📊",
     requirements: [
-      "Basic knowledge of Excel",
-      "Understanding of formulas and functions",
-      "Ability to analyze data",
-      "Stable internet connection",
-      "Time management skills",
+      "Lomba dilaksanakan selama 90 menit.",
+      "Peserta mengerjakan soal praktik menggunakan aplikasi Microsoft Excel 2010.",
+      "Peserta yang terlambat harus menerima konsekuensi, yaitu tidak diberikan tambahan waktu selama lomba berjalan.",
+      "Peserta yang terbukti melakukan pelanggaran atau kecurangan akan diberikan teguran dan pengurangan sebanyak 10 poin.",
+      "Peserta yang terbukti melakukan pelanggaran 2 kali akan didiskualifikasi.",
     ],
     judging: ["Ketepatan Penggunaan Tool dan Fitur", "Kerapian", "Kesesuaian"],
     timeline: [
-      { phase: "Pendaftaran - Gel. 1", date: "29 Sep 2025 – 13 Okt 2025", description: "" },
-      { phase: "Pendaftaran - Gel. 2", date: "14 Okt 2025 – 26 Okt 2025", description: "" },
-      { phase: "Technical Meeting", date: "4 Okt 2025", description: "" },
-      { phase: "Final", date: "27 Okt 2025", description: "" },
-      { phase: "Puncak Acara & Penghargaan", date: "8 Nov 2025", description: "" },
+      {
+        phase: "Pendaftaran - Gel. 1",
+        date: "29 Sep 2025 – 13 Okt 2025",
+        description: "Pendaftaran gelombang pertama",
+      },
+      {
+        phase: "Pendaftaran - Gel. 2",
+        date: "14 Okt 2025 – 26 Okt 2025",
+        description: "Pendaftaran gelombang kedua",
+      },
+      {
+        phase: "Technical Meeting",
+        date: "4 Okt 2025",
+        description: "Briefing teknis lomba",
+      },
+      { phase: "Final", date: "27 Okt 2025", description: "Final Rumus Excel" },
+      {
+        phase: "Puncak Acara & Penghargaan",
+        date: "8 Nov 2025",
+        description: "Pengumuman pemenang dan penghargaan",
+      },
     ],
   },
   "speed-typing": {
     name: "Speed Typing",
-    description: "Test your typing speed and accuracy in a fast-paced competition.",
+    description:
+      "Test your typing speed and accuracy in a fast-paced competition.",
     fullDescription:
       "The Speed Typing competition challenges participants to type as quickly and accurately as possible. You'll be tested on your ability to type complex sentences and navigate through different text formats.",
     participants: "150+",
-    duration: "30 minutes",
+    duration: "60 detik",
     prize: "$2,000",
     deadline: "—",
     grade: "SMP",
     icon: "⌨️",
     requirements: [
-      "Basic typing skills",
-      "Comfort with keyboard layout",
-      "Focus and concentration",
-      "Stable internet connection",
-      "Time management skills",
+      "Peserta akan mengakses website MonkeyType.com di komputer masing-masing.",
+      "Peserta akan melakukan 100 kata dalam waktu 60 detik dengan Bahasa Indonesia.",
+      "Peralatan seperti komputer dan mouse akan disediakan oleh panitia (keyboard boleh dibawa oleh peserta sendiri).",
+      "Peserta tidak diperbolehkan untuk restart text; jika diketahui peserta melakukan restart text maka akan didiskualifikasi.",
+      "Jika peserta selesai maka peserta dapat mengangkat tangan dari keyboard dan membiarkan halaman tetap pada halaman hasil.",
     ],
-    judging: ["Word Per Minute (40%)", "Akurasi (30%)", "Konsistensi (20%)", "Kesalahan dan Benar Kata (10%)"],
+    judging: [
+      "Word Per Minute (40%)",
+      "Akurasi (30%)",
+      "Konsistensi (20%)",
+      "Kesalahan dan Benar Kata (10%)",
+    ],
     timeline: [
-      { phase: "Pendaftaran - Gel. 1", date: "29 Sep 2025 – 13 Okt 2025", description: "" },
-      { phase: "Pendaftaran - Gel. 2", date: "14 Okt 2025 – 26 Okt 2025", description: "" },
-      { phase: "Technical Meeting", date: "4 Okt 2025", description: "" },
-      { phase: "Hari Lomba", date: "27 Okt 2025", description: "" },
-      { phase: "Puncak Acara & Penghargaan", date: "8 Nov 2025", description: "" },
+      {
+        phase: "Pendaftaran - Gel. 1",
+        date: "29 Sep 2025 – 13 Okt 2025",
+        description: "Pendaftaran gelombang pertama",
+      },
+      {
+        phase: "Pendaftaran - Gel. 2",
+        date: "14 Okt 2025 – 26 Okt 2025",
+        description: "Pendaftaran gelombang kedua",
+      },
+      {
+        phase: "Technical Meeting",
+        date: "4 Okt 2025",
+        description: "Briefing teknis lomba",
+      },
+      {
+        phase: "Hari Lomba",
+        date: "27 Okt 2025",
+        description: "Pelaksanaan lomba Speed Typing",
+      },
+      {
+        phase: "Puncak Acara & Penghargaan",
+        date: "8 Nov 2025",
+        description: "Pengumuman pemenang dan penghargaan",
+      },
     ],
   },
-}
+};
 
 const getGradeColor = (Grade: string) => {
   switch (Grade) {
     case "SMP":
-      return "text-orange-300 bg-orange-500/20"
+      return "text-orange-300 bg-orange-500/20";
     case "SMA/SMK":
-      return "text-red-300 bg-red-500/20"
+      return "text-red-300 bg-red-500/20";
     default:
-      return "text-gray-300 bg-gray-500/20"
+      return "text-gray-300 bg-gray-500/20";
   }
-}
+};
 
 export default function CompetitionDetailPage({
   params,
 }: {
-  params: { slug: string }
+  params: { slug: string };
 }) {
-  const competition = competitionData[params.slug as keyof typeof competitionData]
+  const competition =
+    competitionData[params.slug as keyof typeof competitionData];
 
   if (!competition) {
-    notFound()
+    notFound();
   }
 
   return (
@@ -286,7 +452,7 @@ export default function CompetitionDetailPage({
                 </h1>
                 <span
                   className={`px-3 py-1 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-medium flex-shrink-0 ${getGradeColor(
-                    competition.grade,
+                    competition.grade
                   )}`}
                 >
                   {competition.grade}
@@ -335,7 +501,10 @@ export default function CompetitionDetailPage({
               </h2>
               <ul className="space-y-2 sm:space-y-3">
                 {competition.requirements.map((req, index) => (
-                  <li key={index} className="flex items-start gap-2 sm:gap-3 text-white/70 text-sm sm:text-base">
+                  <li
+                    key={index}
+                    className="flex items-start gap-2 sm:gap-3 text-white/70 text-sm sm:text-base"
+                  >
                     <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-green-400 mt-0.5 flex-shrink-0" />
                     <span className="text-pretty">{req}</span>
                   </li>
@@ -351,7 +520,10 @@ export default function CompetitionDetailPage({
               </h2>
               <ul className="space-y-2 sm:space-y-3">
                 {competition.judging.map((criteria, index) => (
-                  <li key={index} className="flex items-start gap-2 sm:gap-3 text-white/70 text-sm sm:text-base">
+                  <li
+                    key={index}
+                    className="flex items-start gap-2 sm:gap-3 text-white/70 text-sm sm:text-base"
+                  >
                     <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-blue-400 mt-0.5 flex-shrink-0" />
                     <span className="text-pretty">{criteria}</span>
                   </li>
@@ -364,9 +536,12 @@ export default function CompetitionDetailPage({
           <div className="space-y-4 sm:space-y-6 lg:space-y-8">
             {/* Registration CTA */}
             <div className="glass-card rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8 text-center">
-              <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-white mb-3 sm:mb-4">Siap Berkompetisi?</h3>
+              <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-white mb-3 sm:mb-4">
+                Siap Berkompetisi?
+              </h3>
               <p className="text-white/70 mb-4 sm:mb-6 text-sm sm:text-base text-pretty">
-                Bergabunglah dengan kompetisi menarik ini dan tunjukkan kemampuan Anda!
+                Bergabunglah dengan kompetisi menarik ini dan tunjukkan
+                kemampuan Anda!
               </p>
               <Link
                 href={`/competition/${params.slug}/register`}
@@ -378,13 +553,24 @@ export default function CompetitionDetailPage({
 
             {/* Timeline */}
             <div className="glass-card rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8">
-              <h3 className="text-lg sm:text-xl font-bold text-white mb-4 sm:mb-6">Jadwal</h3>
+              <h3 className="text-lg sm:text-xl font-bold text-white mb-4 sm:mb-6">
+                Jadwal
+              </h3>
               <div className="space-y-3 sm:space-y-4">
                 {competition.timeline.map((phase, index) => (
-                  <div key={index} className="border-l-2 border-purple-400 pl-3 sm:pl-4">
-                    <h4 className="font-semibold text-white text-sm sm:text-base">{phase.phase}</h4>
-                    <p className="text-xs sm:text-sm text-purple-300 mb-1">{phase.date}</p>
-                    <p className="text-xs sm:text-sm text-white/60 text-pretty">{phase.description}</p>
+                  <div
+                    key={index}
+                    className="border-l-2 border-purple-400 pl-3 sm:pl-4"
+                  >
+                    <h4 className="font-semibold text-white text-sm sm:text-base">
+                      {phase.phase}
+                    </h4>
+                    <p className="text-xs sm:text-sm text-purple-300 mb-1">
+                      {phase.date}
+                    </p>
+                    <p className="text-xs sm:text-sm text-white/60 text-pretty">
+                      {phase.description}
+                    </p>
                   </div>
                 ))}
               </div>
@@ -393,5 +579,5 @@ export default function CompetitionDetailPage({
         </div>
       </div>
     </main>
-  )
+  );
 }

@@ -58,23 +58,6 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Resources Section */}
-          <div>
-            <h3 className="text-white font-semibold mb-3">Resources</h3>
-            <ul className="space-y-1">
-              <li>
-                <a href="/guidelines" className="text-white/70 hover:text-white text-sm transition-colors">
-                  GuideBook
-                </a>
-              </li>
-              <li>
-                <a href="/gallery" className="text-white/70 hover:text-white text-sm transition-colors">
-                  Gallery
-                </a>
-              </li>
-            </ul>
-          </div>
-
           {/* Connect Section */}
           <div>
             <h3 className="text-white font-semibold mb-3">Connect</h3>
