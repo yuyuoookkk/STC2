@@ -7,6 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 
 type CompetitionSlug = "esport-ml" | "esport-ff"
 
@@ -22,8 +23,8 @@ type Player = {
 type FormState = {
   teamName: string
   school: string
+  lombaYangDiikuti: string
   players: Player[]
-  // document uploads (team-level)
   buktiTwibbon?: File | null
   buktiPembayaran?: File | null
   buktiFollow?: File | null
@@ -32,8 +33,8 @@ type FormState = {
 type Errors = {
   teamName?: string
   school?: string
+  lombaYangDiikuti?: string
   players?: Array<Partial<Record<keyof Player, string>>>
-  // doc errors (team-level only)
   buktiTwibbon?: string
   buktiPembayaran?: string
   buktiFollow?: string
@@ -206,6 +207,7 @@ export function EsportsRegistrationForm({ competition }: { competition: Competit
   const [form, setForm] = useState<FormState>({
     teamName: "",
     school: "",
+    lombaYangDiikuti: "",
     players: initialPlayers,
     buktiTwibbon: null,
     buktiPembayaran: null,
@@ -226,7 +228,6 @@ export function EsportsRegistrationForm({ competition }: { competition: Competit
   type DocKey = "buktiTwibbon" | "buktiPembayaran" | "buktiFollow"
 
   function handleFileChange(key: DocKey, file: File | null) {
-    // clear prior error for this field
     setErrors((prev) => ({ ...prev, [key]: undefined }))
 
     if (!file) {
@@ -238,7 +239,6 @@ export function EsportsRegistrationForm({ competition }: { competition: Competit
     const isImage = file.type.startsWith("image/")
     const isPdf = file.type === "application/pdf"
 
-    // rules: Twibbon = image only; others = image or PDF
     const allowPdf = key !== "buktiTwibbon"
     const isAllowedType = allowPdf ? isImage || isPdf : isImage
 
@@ -262,7 +262,6 @@ export function EsportsRegistrationForm({ competition }: { competition: Competit
   }
 
   function handlePlayerFileChange(index: number, file: File | null) {
-    // ensure players error array exists
     setErrors((prev) => {
       const nextPlayers = [...(prev.players || Array.from({ length: form.players.length }).map(() => ({})))]
       if (!file) {
@@ -302,6 +301,9 @@ export function EsportsRegistrationForm({ competition }: { competition: Competit
     if (!required(form.school)) {
       nextErrors.school = "Asal sekolah wajib diisi."
     }
+    if (!required(form.lombaYangDiikuti)) {
+      nextErrors.lombaYangDiikuti = "Lomba yang diikuti wajib diisi."
+    }
 
     nextErrors.players = form.players.map((p) => {
       const e: Partial<Record<keyof Player, string>> = {}
@@ -322,7 +324,9 @@ export function EsportsRegistrationForm({ competition }: { competition: Competit
     const hasDocErrors = !!nextErrors.buktiTwibbon || !!nextErrors.buktiPembayaran || !!nextErrors.buktiFollow
 
     setErrors(nextErrors)
-    return !nextErrors.teamName && !nextErrors.school && !hasPlayerErrors && !hasDocErrors
+    return (
+      !nextErrors.teamName && !nextErrors.school && !nextErrors.lombaYangDiikuti && !hasPlayerErrors && !hasDocErrors
+    )
   }
 
   async function handleSubmit(e: React.FormEvent) {
@@ -330,7 +334,6 @@ export function EsportsRegistrationForm({ competition }: { competition: Competit
     if (!validate()) return
     setSubmitting(true)
 
-    // Simulate API call
     await new Promise((r) => setTimeout(r, 1200))
 
     setSubmitting(false)
@@ -340,6 +343,7 @@ export function EsportsRegistrationForm({ competition }: { competition: Competit
       competition,
       teamName: form.teamName,
       school: form.school,
+      lombaYangDiikuti: form.lombaYangDiikuti,
       players: form.players.map((p) => ({
         fullName: p.fullName,
         nisn: p.nisn,
@@ -419,6 +423,34 @@ export function EsportsRegistrationForm({ competition }: { competition: Competit
               />
               {errors.school && <p className="text-destructive text-sm">{errors.school}</p>}
             </div>
+
+            <div className="space-y-2 md:col-span-2">
+              <Label htmlFor="lombaYangDiikuti">
+                Lomba Yang Diikuti{" "}
+                <span aria-hidden="true" className="text-destructive">
+                  *
+                </span>
+              </Label>
+              <Select
+                value={form.lombaYangDiikuti}
+                onValueChange={(value) => setForm((prev) => ({ ...prev, lombaYangDiikuti: value }))}
+              >
+                <SelectTrigger
+                  className={errors.lombaYangDiikuti ? "border-destructive bg-background" : "bg-background"}
+                >
+                  <SelectValue placeholder="Pilih lomba yang diikuti" />
+                </SelectTrigger>
+                <SelectContent className="bg-background border border-border">
+                  <SelectItem value="esport-ml" className="bg-background hover:bg-accent">
+                    Mobile Legends Bang Bang
+                  </SelectItem>
+                  <SelectItem value="esport-ff" className="bg-background hover:bg-accent">
+                    Free Fire
+                  </SelectItem>
+                </SelectContent>
+              </Select>
+              {errors.lombaYangDiikuti && <p className="text-destructive text-sm">{errors.lombaYangDiikuti}</p>}
+            </div>
           </div>
 
           <div className="space-y-6">
@@ -447,7 +479,6 @@ export function EsportsRegistrationForm({ competition }: { competition: Competit
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {/* Twibbon */}
               <div className="space-y-2">
                 <Label htmlFor="buktiTwibbon">Bukti Upload Twibbon *</Label>
                 <Input
@@ -463,7 +494,6 @@ export function EsportsRegistrationForm({ competition }: { competition: Competit
                 )}
               </div>
 
-              {/* Pembayaran */}
               <div className="space-y-2">
                 <Label htmlFor="buktiPembayaran">Bukti Pembayaran *</Label>
                 <Input
@@ -479,7 +509,6 @@ export function EsportsRegistrationForm({ competition }: { competition: Competit
                 )}
               </div>
 
-              {/* Follow */}
               <div className="space-y-2">
                 <Label htmlFor="buktiFollow">Bukti Follow *</Label>
                 <Input

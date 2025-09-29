@@ -6,6 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Badge } from "@/components/ui/badge"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { CheckCircle, User, Upload, FileText } from "lucide-react"
 
 interface SpecializedFormData {
@@ -13,6 +14,7 @@ interface SpecializedFormData {
   nisn: string
   asalSekolah: string
   noHandphone: string
+  lombaYangDiikuti: string // Added competition field
   buktiKartuPelajar: File | null
   buktiTwibbon: File | null
   buktiPembayaran: File | null
@@ -24,11 +26,20 @@ const initialFormData: SpecializedFormData = {
   nisn: "",
   asalSekolah: "",
   noHandphone: "",
+  lombaYangDiikuti: "", // Added initial value for competition field
   buktiKartuPelajar: null,
   buktiTwibbon: null,
   buktiPembayaran: null,
   buktiFollow: null,
 }
+
+const competitionOptions = [
+  { value: "webdesign", label: "Web Design" },
+  { value: "rumus-excel", label: "Rumus Excel" },
+  { value: "design-maskot", label: "Design Maskot" },
+  { value: "design-poster", label: "Design Poster" },
+  { value: "speed-typing", label: "Speed Typing" },
+]
 
 const allowedCompetitions = [
   "web-design",
@@ -75,6 +86,7 @@ export function SpecializedRegistrationForm({ competitionSlug }: SpecializedRegi
       if (!formData.nisn.trim()) e.nisn = "NISN wajib diisi"
       if (!formData.asalSekolah.trim()) e.asalSekolah = "Asal sekolah wajib diisi"
       if (!formData.noHandphone.trim()) e.noHandphone = "No handphone wajib diisi"
+      if (!formData.lombaYangDiikuti.trim()) e.lombaYangDiikuti = "Lomba yang diikuti wajib dipilih" // Added validation for competition field
     }
 
     if (step === 2) {
@@ -129,7 +141,7 @@ export function SpecializedRegistrationForm({ competitionSlug }: SpecializedRegi
               lanjut.
             </p>
             <Badge variant="secondary" className="text-xs sm:text-sm glass bg-white/20 text-white border-white/30">
-              ID Pendaftaran: #STC{Math.random().toString(36).substr(2, 9).toUpperCase()} //random id
+              ID Pendaftaran: #STC{Math.random().toString(36).substr(2, 9).toUpperCase()}
             </Badge>
           </CardContent>
         </Card>
@@ -208,7 +220,7 @@ export function SpecializedRegistrationForm({ competitionSlug }: SpecializedRegi
                   value={formData.namaLengkap}
                   onChange={(e) => handleInputChange("namaLengkap", e.target.value)}
                   placeholder="Masukkan nama lengkap Anda"
-                  className="glass border-white/30 text-white placeholder:text-white/60 text-sm sm:text-base"
+                  className="glass border-white/30 text-white placeholder:text-white/60 text-sm sm:text-base bg-background"
                   aria-invalid={Boolean(errors.namaLengkap)}
                 />
                 {errors.namaLengkap && <p className="text-red-300 text-xs">{errors.namaLengkap}</p>}
@@ -222,7 +234,7 @@ export function SpecializedRegistrationForm({ competitionSlug }: SpecializedRegi
                   value={formData.nisn}
                   onChange={(e) => handleInputChange("nisn", e.target.value)}
                   placeholder="Masukkan NISN Anda"
-                  className="glass border-white/30 text-white placeholder:text-white/60 text-sm sm:text-base"
+                  className="glass border-white/30 text-white placeholder:text-white/60 text-sm sm:text-base bg-background"
                   aria-invalid={Boolean(errors.nisn)}
                 />
                 {errors.nisn && <p className="text-red-300 text-xs">{errors.nisn}</p>}
@@ -236,7 +248,7 @@ export function SpecializedRegistrationForm({ competitionSlug }: SpecializedRegi
                   value={formData.asalSekolah}
                   onChange={(e) => handleInputChange("asalSekolah", e.target.value)}
                   placeholder="Masukkan nama sekolah Anda"
-                  className="glass border-white/30 text-white placeholder:text-white/60 text-sm sm:text-base"
+                  className="glass border-white/30 text-white placeholder:text-white/60 text-sm sm:text-base bg-background"
                   aria-invalid={Boolean(errors.asalSekolah)}
                 />
                 {errors.asalSekolah && <p className="text-red-300 text-xs">{errors.asalSekolah}</p>}
@@ -251,10 +263,31 @@ export function SpecializedRegistrationForm({ competitionSlug }: SpecializedRegi
                   value={formData.noHandphone}
                   onChange={(e) => handleInputChange("noHandphone", e.target.value)}
                   placeholder="Masukkan nomor handphone/WhatsApp Anda"
-                  className="glass border-white/30 text-white placeholder:text-white/60 text-sm sm:text-base"
+                  className="glass border-white/30 text-white placeholder:text-white/60 text-sm sm:text-base bg-background"
                   aria-invalid={Boolean(errors.noHandphone)}
                 />
                 {errors.noHandphone && <p className="text-red-300 text-xs">{errors.noHandphone}</p>}
+              </div>
+              <div className="space-y-2 md:col-span-2">
+                <Label htmlFor="lombaYangDiikuti" className="text-white text-sm">
+                  Lomba yang Diikuti *
+                </Label>
+                <Select
+                  value={formData.lombaYangDiikuti}
+                  onValueChange={(value) => handleInputChange("lombaYangDiikuti", value)}
+                >
+                  <SelectTrigger className="glass border-white/30 text-white bg-background">
+                    <SelectValue placeholder="Pilih lomba yang diikuti" />
+                  </SelectTrigger>
+                  <SelectContent className="bg-background border-white/30">
+                    {competitionOptions.map((option) => (
+                      <SelectItem key={option.value} value={option.value} className="text-foreground hover:bg-accent">
+                        {option.label}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+                {errors.lombaYangDiikuti && <p className="text-red-300 text-xs">{errors.lombaYangDiikuti}</p>}
               </div>
             </div>
           )}
@@ -377,6 +410,11 @@ export function SpecializedRegistrationForm({ competitionSlug }: SpecializedRegi
                     </p>
                     <p className="text-white">
                       <span className="text-white/70">No Handphone:</span> {formData.noHandphone}
+                    </p>
+                    <p className="text-white">
+                      <span className="text-white/70">Lomba yang Diikuti:</span>{" "}
+                      {competitionOptions.find((opt) => opt.value === formData.lombaYangDiikuti)?.label ||
+                        formData.lombaYangDiikuti}
                     </p>
                   </div>
                 </div>
