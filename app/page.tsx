@@ -134,12 +134,6 @@ export default function Home() {
               Lihat Kompetisi
               <ArrowRight className="w-5 h-5" />
             </Link>
-            <Link
-              href="/register"
-              className="bg-white/20 backdrop-blur-10 border border-white/30 px-6 sm:px-8 py-3 sm:py-4 rounded-xl text-white font-semibold hover:bg-white/30 transition-all duration-300"
-            >
-              Daftar Sekarang
-            </Link>
           </div>
         </div>
       </section>

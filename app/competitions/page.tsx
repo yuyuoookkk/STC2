@@ -159,23 +159,6 @@ export default function CompetitionsPage() {
             </div>
           ))}
         </div>
-
-        <div className="text-center">
-          <div className="glass-card rounded-xl sm:rounded-2xl p-6 sm:p-8 lg:p-12 max-w-2xl mx-auto">
-            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3 sm:mb-4">Siap Berkompetisi?</h2>
-            <p className="text-white/70 mb-6 sm:mb-8 text-sm sm:text-base px-2">
-              Bergabunglah dengan ribuan peserta dalam kejuaraan teknologi terbesar. Daftar sekarang dan tunjukkan
-              kemampuan Anda!
-            </p>
-            <Link
-              href="/register"
-              className="glass-button px-6 sm:px-8 py-3 sm:py-4 rounded-lg sm:rounded-xl text-white font-semibold inline-flex items-center gap-2 hover:scale-105 transition-all duration-300 text-sm sm:text-base"
-            >
-              Daftar STC
-              <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
-            </Link>
-          </div>
-        </div>
       </div>
     </main>
   )
